@@ -10,8 +10,8 @@
 * [ ] Add new workouts
 * [ ] Add new users
 * [ ] Edit lifts
-* [ ] PRs have weight, reps, and sets
-* [ ] Organize workouts into categories
+* [x] PRs have weight, reps, and sets
+* [x] Organize workouts into categories
 * [ ] Show all of one users prs
 * [ ] Export users PRs to PDF
 * [ ] Dockerize
