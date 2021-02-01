@@ -17,6 +17,9 @@ export default {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        // box-shadow: 0px 5px 10px rgba($color: #000000, $alpha: 0.2);
+        border-bottom: 3px solid var(--main);
+        margin-bottom: 3em;
 
         a {
             text-decoration: none;

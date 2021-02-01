@@ -12,6 +12,7 @@ NOTE: Scoped Slots
     <p>Reps:<br> <span class="bold">{{ workout.reps }}</span></p>
     <p>Sets:<br> <span class="bold">{{ workout.sets }}</span></p>
     <slot :data="workout.name" :data2="data2" />
+    <router-link to="/users"><font-awesome-icon :icon="['fas', 'edit']"/></router-link>
 </div>
 
 </template>
@@ -91,6 +92,16 @@ export default {
             margin-right: 0px;
         }
 
+    }
+    .fa-edit {
+        font-size: 1.25em;
+        color: #2c3e50;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            color: #aee;
+            transition: 0.2s ease-in-out;
+        }
     }
     
 

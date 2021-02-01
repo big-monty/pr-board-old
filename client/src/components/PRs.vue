@@ -1,11 +1,9 @@
-<!-- 
-NOTE: Scoped Slots
--->
-
 <template>
     <div class="prs">
+        <div class="header-container">
+            <button class="muscle-group-header" @click="mgMenu()">Arms</button>
+        </div>
         <div class="muscle-group" id="arms">
-            <h2>Arms</h2>
             <h3 class="mid-title">Biceps</h3>
             <div class="muscle-group-container">
                 <div class="prs-container">
@@ -58,8 +56,10 @@ NOTE: Scoped Slots
                 </div>
             </div>
         </div>
+        <div class="header-container">
+            <button class="muscle-group-header" @click="mgMenu()">Chest</button>
+        </div>
         <div class="muscle-group" id="chest">
-            <h2>Chest</h2>
             <div class="muscle-group-container">
                 <div class="prs-container">
                     <h3>Benchpress</h3>
@@ -83,8 +83,10 @@ NOTE: Scoped Slots
                 </div>
             </div>
         </div>
+        <div class="header-container">
+            <button class="muscle-group-header" @click="mgMenu()">Back</button>
+        </div>
         <div class="muscle-group" id="back">
-            <h2>Back</h2>
             <div class="muscle-group-container">
                 <div class="prs-container">
                     <h3>Deadlift</h3>
@@ -116,8 +118,10 @@ NOTE: Scoped Slots
                 </div>
             </div>
         </div>
+        <div class="header-container">
+            <button class="muscle-group-header" @click="mgMenu()">Shoulders</button>
+        </div>
         <div class="muscle-group" id="shoulders">
-            <h2>Shoulders</h2>
             <div class="muscle-group-container">
                 <div class="prs-container">
                     <h3>Barbell Shoulder Press</h3>
@@ -153,8 +157,10 @@ NOTE: Scoped Slots
                 </div>
             </div>
         </div>
+        <div class="header-container">
+            <button class="muscle-group-header" @click="mgMenu()">Legs</button>
+        </div>
         <div class="muscle-group" id="legs">
-            <h2>Legs</h2>
             <div class="muscle-group-container">
                 <div class="prs-container">
                     <h3>Squat</h3>
@@ -186,8 +192,10 @@ NOTE: Scoped Slots
                 </div>
             </div>
         </div>
+        <div class="header-container">
+            <button class="muscle-group-header" @click="mgMenu()">Abs</button>
+        </div>
         <div class="muscle-group" id="abs">
-            <h2>Abs</h2>
             <div class="muscle-group-container">
                 <div class="prs-container">
                     <h3>Situps</h3>
@@ -229,6 +237,7 @@ export default {
 
         getPRs();
         // console.log(PRs.value);
+        
 
         return {
             users,
@@ -237,12 +246,45 @@ export default {
     data: ()=> ({
         
     }),
+    methods: {
+        mgMenu() {
+            
+        }
+    },
+    mounted: function() {
+        var acc = document.getElementsByClassName("header-container");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    /* Toggle between adding and removing the "active" class,
+                    to highlight the button that controls the panel */
+                    this.classList.toggle("active");
+                    // if (this.classList.contains("active")){
+                    //     this.innerHTML= "<button class='muscle-group-header'>Arms<font-awesome-icon :icon=\"['fas', 'plus']\"/></button>";
+                    // } else {
+                    //     this.innerHTML= "<button class='muscle-group-header'>Arms<font-awesome-icon :icon=\"['fas', 'minus']\"/></button>";
+                    // }
+
+                    /* Toggle between hiding and showing the active panel */
+                    var muscleGroup = this.nextElementSibling;
+                    if (muscleGroup.style.maxHeight) {
+                    muscleGroup.style.maxHeight = null;
+                    } else {
+                    muscleGroup.style.maxHeight = muscleGroup.scrollHeight + "px";
+                    
+                    } 
+                });
+            } 
+            console.log('test');
+    }
     
 
 }
 </script>
 
 <style lang="scss">
+
     .prs-container {
         display: flex;
         flex-direction: column;
@@ -256,14 +298,10 @@ export default {
         }
 
     }
+    button {
+        
+    }
     .muscle-group {
-        h2 {
-            padding: 1em;
-            border-radius: 5px;
-            box-shadow: 0px 5px 15px rgba($color: #2c3e50, $alpha: 0.2);
-            background-color: #AEE;
-            text-align: center;
-        }
         .mid-title {
             width: 50%;
             margin: 0 auto;
@@ -282,4 +320,70 @@ export default {
         }
 
     }
+    .header-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+     /* Style the buttons that are used to open and close the accordion panel */
+    .muscle-group-header {
+        // @include fa-icon;        
+        // @extend %fa-icon;
+        // @extend .fas;
+
+        background-color: #aee;
+        color: #444;
+        cursor: pointer;
+        padding: 1em;
+        width: 100%;
+        max-width: 1000px;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.5s;
+        margin: 0 auto;
+        margin-bottom: 0.5em;
+        padding: 1em;
+        border-radius: 5px;
+        box-shadow: 0px 5px 15px rgba($color: #2c3e50, $alpha: 0.2);
+        font-size: 1.5em;
+        // display: flex;
+        // justify-content: space-between;
+
+        &:hover {
+            background-color: darken(#aee, 20%);
+        }
+        &:after {
+            
+
+            // content: fa-content($fa-var-plus);
+            // content: "\2795";
+            content: "Show";
+            font-size: 0.75em;
+            font-weight: 100;
+            color: var(--text);
+            float: right;
+            margin-left: 0.3em;
+            outline: none;
+        }
+    }
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active > .muscle-group-header {
+        background-color: darken(#aee, 20%);
+
+        &:after {
+            content: "Hide"; /* Unicode character for "minus" sign (-) */
+            // content: "\2796"; /* Unicode character for "minus" sign (-) */
+        }
+    }
+
+    /* Style the accordion panel. Note: hidden by default */
+    .muscle-group {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+    } 
 </style>

@@ -15,6 +15,18 @@ export default {
 </script>
 
 <style lang="scss">
+@import "/scss/fontawesome.scss";
+@import "/scss/solid.scss";
+// @import "/scss/brands.scss";
+
+:root {
+  --main: #aee;
+  --text: #2c3e50;
+}
+
+body {
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
