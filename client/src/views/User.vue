@@ -1,7 +1,7 @@
 <template>
   <ul>
-    <li v-for="user in users" :key="user._id">
-      <router-link :to="{ name: 'user', params: { id: user._id, } }">{{ user.name }}</router-link>
+    <li>
+      <!-- {{ user.name }} -->
     </li>
   </ul>
 </template>
@@ -11,10 +11,11 @@
 import { ref } from 'vue';
 // import { useRouter } from 'vue-router';
 
+
 export default {
     setup() {
 
-        // const { router } = useRouter();
+        // const { route } = useRouter();
         const users = ref([]);
 
         const API_URL = 'http://192.168.1.105:5000/api/v1/prs/';
@@ -29,18 +30,15 @@ export default {
         getPRs();
         // console.log(PRs.value);
 
-        // function viewUser(_id){
-        //   router.push({
-        //     name: 'user',
-        //     params: {
-        //       id: _id,
-        //     },
-        //   });
-        // }
+        function getUser() {
+          // const { id } = route.params;
+          // console.log(id);
+        }
+
+        getUser();
 
         return {
             users,
-            // viewUser,
         }
     },
 }

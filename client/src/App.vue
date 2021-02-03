@@ -20,8 +20,10 @@ export default {
 // @import "/scss/brands.scss";
 
 :root {
-  --main: #aee;
-  --text: #2c3e50;
+  --main: rgb(238, 170, 170);
+  --mainDark: rgb(165, 72, 72);
+  --text: #310e0e;
+  --white: white;
 }
 
 body {
@@ -31,7 +33,7 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: var(--text);
 }
 
 #nav {
@@ -42,7 +44,7 @@ body {
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: darken(#AEE, 50%);
+      color: var(--text);
     }
   }
 }

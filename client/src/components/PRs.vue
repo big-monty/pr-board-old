@@ -276,7 +276,7 @@ export default {
                     } 
                 });
             } 
-            console.log('test');
+            // console.log('test');
     }
     
 
@@ -298,9 +298,6 @@ export default {
         }
 
     }
-    button {
-        
-    }
     .muscle-group {
         .mid-title {
             width: 50%;
@@ -308,7 +305,7 @@ export default {
             margin-bottom: 1em;
             text-align: center;
             padding: 1em;
-            border-bottom: 2px solid #AEE;
+            border-bottom: 2px solid var(--main);
         }
         .muscle-group-container {
             display: flex;
@@ -331,12 +328,12 @@ export default {
         // @extend %fa-icon;
         // @extend .fas;
 
-        background-color: #aee;
+        background-color: var(--main);
         color: #444;
         cursor: pointer;
         padding: 1em;
         width: 100%;
-        max-width: 1000px;
+        max-width: 80%;
         text-align: left;
         border: none;
         outline: none;
@@ -351,11 +348,15 @@ export default {
         // justify-content: space-between;
 
         &:hover {
-            background-color: darken(#aee, 20%);
+            background-color: var(--mainDark);
+            color: var(--white);
+
+            &:after {
+                color: var(--white);
+                transition: 0.5s;
+            }
         }
         &:after {
-            
-
             // content: fa-content($fa-var-plus);
             // content: "\2795";
             content: "Show";
@@ -370,10 +371,12 @@ export default {
 
     /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
     .active > .muscle-group-header {
-        background-color: darken(#aee, 20%);
+        background-color: var(--mainDark);
+        color: var(--white);
 
         &:after {
             content: "Hide"; /* Unicode character for "minus" sign (-) */
+            color: var(--white);
             // content: "\2796"; /* Unicode character for "minus" sign (-) */
         }
     }

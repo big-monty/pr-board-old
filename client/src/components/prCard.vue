@@ -12,7 +12,7 @@ NOTE: Scoped Slots
     <p>Reps:<br> <span class="bold">{{ workout.reps }}</span></p>
     <p>Sets:<br> <span class="bold">{{ workout.sets }}</span></p>
     <slot :data="workout.name" :data2="data2" />
-    <router-link to="/users"><font-awesome-icon :icon="['fas', 'edit']"/></router-link>
+    <router-link :to="{ name: 'update', params: { id: userData._id } }"><font-awesome-icon :icon="['fas', 'edit']" /></router-link>
 </div>
 
 </template>
@@ -20,6 +20,7 @@ NOTE: Scoped Slots
 <script>
 
 import { ref } from 'vue';
+// import { useRouter } from 'vue-router';
 
 export default {
     props: {
@@ -29,6 +30,7 @@ export default {
     },
     setup() {
 
+        // const { router } = useRouter();
         const users = ref([]);
 
         const API_URL = 'http://192.168.1.105:5000/api/v1/prs/';
@@ -42,8 +44,18 @@ export default {
         getPRs();
         // console.log(PRs.value);
 
+        // function editPR(_id) {
+        //     router.push({
+        //        name: 'update',
+        //        params: {
+        //            id: _id,
+        //        }, 
+        //     });
+        // }
+
         return {
             users,
+            // editPR,
         }
     },
     data: ()=>({
@@ -95,11 +107,11 @@ export default {
     }
     .fa-edit {
         font-size: 1.25em;
-        color: #2c3e50;
+        color: var(--text);
         transition: 0.2s ease-in-out;
 
         &:hover {
-            color: #aee;
+            color: var(--main);
             transition: 0.2s ease-in-out;
         }
     }
